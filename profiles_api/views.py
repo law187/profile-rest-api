@@ -7,7 +7,7 @@ from profiles_api import serializers
 
 
 class HelloApiView(APIView):
-    """docstring for ."""
+
     serializer_class = serializers.HelloSerializer
 
 
@@ -24,5 +24,21 @@ class HelloApiView(APIView):
             name = serializer.validated_data.get('name')
             message = f'hello{name}'
             return Response({'message':message})
+
         else :
             return Response (serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self,request, PK=None):
+
+        return Response({'method' : 'PUT'})
+
+
+
+    def patch(self,request, PK=None):
+
+        return Response({'method' : 'PATCH'})
+
+
+    def delete(self,request, PK=None):
+
+        return Response({'method' : 'DELETE'})
