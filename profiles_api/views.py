@@ -12,6 +12,10 @@ from profiles_api import models
 from profiles_api import permissions
 
 from rest_framework import filters
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.settings import api_settings
+
+
 
 
 class HelloApiView(APIView):
@@ -95,3 +99,7 @@ class UseerProfileViewSet(viewsets.ModelViewSet):
         permission_classes = (permissions.updateOwnProfile,)
         filter_backends = (filters.SearchFilter,)
         search_fields = ('name','email',)
+
+
+class UserLoginApiView(ObtainAuthToken):
+    renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
